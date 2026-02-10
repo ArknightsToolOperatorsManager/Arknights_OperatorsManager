@@ -1,0 +1,171 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Arknights_OperatorsManager.ViewModels.Operators"
+             mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="800"
+             x:Class="Arknights_OperatorsManager.Views.Operators.OperatorDetailView"
+             x:DataType="vm:OperatorDetailViewModel">
+
+  <Design.DataContext>
+    <vm:OperatorDetailViewModel />
+  </Design.DataContext>
+
+  <!-- Main Content: Show only when IsDetailVisible is true -->
+  <Panel IsVisible="{Binding IsDetailVisible}">
+
+    <!-- Empty State: Show when no operator is selected -->
+    <Border IsVisible="{Binding !SelectedOperator}">
+      <TextBlock Text="Select an operator to view details"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 FontSize="16"
+                 Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+    </Border>
+
+    <!-- Detail Content: Show when operator is selected -->
+    <ScrollViewer IsVisible="{Binding SelectedOperator, Converter={x:Static ObjectConverters.IsNotNull}}">
+      <StackPanel Margin="16" Spacing="12">
+
+        <!-- Header with Close Button -->
+        <Grid ColumnDefinitions="*,Auto">
+          <TextBlock Grid.Column="0"
+                     Text="{Binding SelectedOperator.Name.Ja}"
+                     FontSize="24"
+                     FontWeight="Bold"
+                     VerticalAlignment="Center" />
+          <Button Grid.Column="1"
+                  Content="×"
+                  Command="{Binding CloseDetailCommand}"
+                  Width="32"
+                  Height="32"
+                  FontSize="20" />
+        </Grid>
+
+        <Separator />
+
+        <!-- Basic Info Section -->
+        <StackPanel Spacing="8">
+          <TextBlock Text="Basic Information" FontWeight="Bold" FontSize="16" />
+
+          <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="120,*">
+
+            <!-- ID -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="ID:" Margin="0,0,0,4" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedOperator.Id}" Margin="0,0,0,4" />
+
+            <!-- Name (En) -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name (EN):" Margin="0,0,0,4" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedOperator.Name.En}" Margin="0,0,0,4" />
+
+            <!-- Class -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Class:" Margin="0,0,0,4" />
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,4">
+              <TextBlock Text="{Binding SelectedOperator.Class}" />
+              <Button Content="Filter"
+                      Command="{Binding ApplyQuickFilterCommand}"
+                      CommandParameter="Class"
+                      Margin="8,0,0,0"
+                      Padding="4,2" />
+            </StackPanel>
+
+            <!-- Rarity -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Rarity:" Margin="0,0,0,4" />
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,4">
+              <TextBlock Text="{Binding SelectedOperator.Rarity.Value, StringFormat='★{0}'}" />
+              <Button Content="Filter"
+                      Command="{Binding ApplyQuickFilterCommand}"
+                      CommandParameter="Rarity"
+                      Margin="8,0,0,0"
+                      Padding="4,2" />
+            </StackPanel>
+
+            <!-- Race -->
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Race:" />
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+              <TextBlock Text="{Binding SelectedOperator.Race}" />
+              <Button Content="Filter"
+                      Command="{Binding ApplyQuickFilterCommand}"
+                      CommandParameter="Race"
+                      Margin="8,0,0,0"
+                      Padding="4,2" />
+            </StackPanel>
+
+          </Grid>
+        </StackPanel>
+
+        <Separator />
+
+        <!-- Additional Info Section -->
+        <StackPanel Spacing="8">
+          <TextBlock Text="Additional Information" FontWeight="Bold" FontSize="16" />
+
+          <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="120,*">
+
+            <!-- Faction -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Faction:" Margin="0,0,0,4" />
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,4">
+              <TextBlock Text="{Binding SelectedOperator.Faction}" />
+              <Button Content="Filter"
+                      Command="{Binding ApplyQuickFilterCommand}"
+                      CommandParameter="Faction"
+                      Margin="8,0,0,0"
+                      Padding="4,2" />
+            </StackPanel>
+
+            <!-- Gender -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Gender:" Margin="0,0,0,4" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedOperator.Sex, Converter={x:Static ObjectConverters.IsNotNull}, ConverterParameter='Male|Female'}" Margin="0,0,0,4" />
+
+            <!-- Position -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Position:" Margin="0,0,0,4" />
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedOperator.Place}" Margin="0,0,0,4" />
+
+            <!-- Tags -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Tags:" />
+            <ItemsControl Grid.Row="3" Grid.Column="1" ItemsSource="{Binding SelectedOperator.Tags}">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <WrapPanel />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Border Background="{DynamicResource SystemAccentColor}"
+                          CornerRadius="3"
+                          Padding="6,2"
+                          Margin="0,0,4,4">
+                    <TextBlock Text="{Binding}" Foreground="White" FontSize="12" />
+                  </Border>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+          </Grid>
+        </StackPanel>
+
+        <Separator />
+
+        <!-- Dates Section -->
+        <StackPanel Spacing="8">
+          <TextBlock Text="Release Information" FontWeight="Bold" FontSize="16" />
+
+          <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="120,*">
+
+            <!-- Add Date (Global) -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Release (Global):" Margin="0,0,0,4" />
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedOperator.AddDate.Global, StringFormat='{}{0:yyyy-MM-dd}'}" Margin="0,0,0,4" />
+
+            <!-- Add Date (China) -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Release (China):" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedOperator.AddDate.China, StringFormat='{}{0:yyyy-MM-dd}'}" />
+
+          </Grid>
+        </StackPanel>
+
+      </StackPanel>
+    </ScrollViewer>
+
+  </Panel>
+
+</UserControl>

@@ -1,0 +1,79 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Arknights_OperatorsManager.ViewModels.Operators"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="800"
+             x:Class="Arknights_OperatorsManager.Views.Operators.OperatorListView"
+             x:DataType="vm:OperatorListViewModel">
+
+  <Design.DataContext>
+    <vm:OperatorListViewModel />
+  </Design.DataContext>
+
+  <DockPanel>
+
+    <!-- Top Toolbar -->
+    <Grid DockPanel.Dock="Top" RowDefinitions="Auto,Auto" Margin="8">
+
+      <!-- Row 0: Search and Filter Button -->
+      <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+        <TextBox Grid.Column="0"
+                 Text="{Binding SearchText}"
+                 Watermark="Search operators..."
+                 Margin="0,0,8,0" />
+
+        <Button Grid.Column="1"
+                Content="Filter"
+                Command="{Binding OpenFilterDialogCommand}" />
+      </Grid>
+
+      <!-- Row 1: Count Display -->
+      <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,8,0,0">
+        <TextBlock Text="Showing: " />
+        <TextBlock Text="{Binding FilteredCount}" FontWeight="Bold" />
+        <TextBlock Text=" / " />
+        <TextBlock Text="{Binding TotalCount}" />
+        <TextBlock Text=" operators" Margin="4,0,0,0" />
+      </StackPanel>
+
+    </Grid>
+
+    <!-- Operator List -->
+    <DataGrid DockPanel.Dock="Top"
+              ItemsSource="{Binding Operators}"
+              SelectedItem="{Binding SelectedOperator}"
+              AutoGenerateColumns="False"
+              IsReadOnly="True"
+              GridLinesVisibility="Horizontal"
+              SelectionMode="Single"
+              CanUserReorderColumns="True"
+              CanUserResizeColumns="True"
+              CanUserSortColumns="True"
+              Margin="8,0,8,8">
+
+      <DataGrid.Columns>
+
+        <DataGridTextColumn Header="Name"
+                            Binding="{Binding Name.Ja}"
+                            Width="*" />
+
+        <DataGridTextColumn Header="Class"
+                            Binding="{Binding Class}"
+                            Width="120" />
+
+        <DataGridTextColumn Header="Rarity"
+                            Binding="{Binding Rarity.Value}"
+                            Width="80" />
+
+        <DataGridTextColumn Header="Race"
+                            Binding="{Binding Race}"
+                            Width="100" />
+
+      </DataGrid.Columns>
+
+    </DataGrid>
+
+  </DockPanel>
+
+</UserControl>

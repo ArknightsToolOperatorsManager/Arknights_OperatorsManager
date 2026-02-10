@@ -1,0 +1,114 @@
+{
+  "App": {
+    "Name": "アークナイツ オペレーター管理",
+    "Version": "バージョン"
+  },
+  "Common": {
+    "Ok": "OK",
+    "Cancel": "キャンセル",
+    "Save": "保存",
+    "Delete": "削除",
+    "Edit": "編集",
+    "Add": "追加",
+    "Close": "閉じる",
+    "Search": "検索",
+    "Filter": "フィルター",
+    "Reset": "リセット",
+    "Loading": "読み込み中...",
+    "Error": "エラー",
+    "Warning": "警告",
+    "Info": "情報",
+    "Success": "成功",
+    "Confirm": "確認",
+    "Yes": "はい",
+    "No": "いいえ"
+  },
+  "Menu": {
+    "File": "ファイル",
+    "Edit": "編集",
+    "View": "表示",
+    "Settings": "設定",
+    "Help": "ヘルプ",
+    "Export": "エクスポート",
+    "Import": "インポート",
+    "Backup": "バックアップ",
+    "Restore": "復元",
+    "Exit": "終了"
+  },
+  "Operators": {
+    "Title": "オペレーター",
+    "List": "オペレーター一覧",
+    "Detail": "オペレーター詳細",
+    "Name": "名前",
+    "Rarity": "レアリティ",
+    "Class": "職業",
+    "Promotion": "昇進",
+    "Level": "レベル",
+    "SkillLevel": "スキルレベル",
+    "SkillMastery": "スキル特化",
+    "Module": "モジュール",
+    "Trust": "信頼度",
+    "Potential": "潜在",
+    "CurrentState": "現在状態",
+    "TargetState": "目標状態",
+    "Group": "グループ",
+    "Priority": "優先度",
+    "Memo": "メモ"
+  },
+  "Materials": {
+    "Title": "素材",
+    "List": "素材一覧",
+    "Owned": "所持数",
+    "Required": "必要数",
+    "Shortage": "不足数",
+    "Sufficient": "充足",
+    "Category": "カテゴリ"
+  },
+  "Events": {
+    "Title": "イベント",
+    "List": "イベント一覧",
+    "Name": "イベント名",
+    "Materials": "入手素材",
+    "Enabled": "有効",
+    "Disabled": "無効"
+  },
+  "Settings": {
+    "Title": "設定",
+    "Language": "言語",
+    "Theme": "テーマ",
+    "ThemeLight": "ライト",
+    "ThemeDark": "ダーク",
+    "ThemeSystem": "システム設定に従う",
+    "Server": "サーバー",
+    "ServerCN": "大陸版",
+    "ServerGlobal": "グローバル版",
+    "Backup": "バックアップ設定",
+    "BackupInterval": "バックアップ間隔",
+    "BackupRetention": "バックアップ保持数",
+    "AutoUpdate": "自動更新"
+  },
+  "Validation": {
+    "Required": "{0}は必須です",
+    "InvalidRange": "{0}は{1}から{2}の範囲で入力してください",
+    "PromotionLimit": "このレアリティでは昇進{0}まで可能です",
+    "LevelLimit": "昇進{0}では最大レベルは{1}です",
+    "MasteryRequiresPromotion2": "スキル特化は昇進2が必要です",
+    "ModuleRequiresPromotion2": "モジュールは昇進2が必要です"
+  },
+  "Notifications": {
+    "SaveSuccess": "保存しました",
+    "SaveFailed": "保存に失敗しました",
+    "LoadSuccess": "読み込みました",
+    "LoadFailed": "読み込みに失敗しました",
+    "BackupCreated": "バックアップを作成しました",
+    "UpdateAvailable": "新しい更新があります",
+    "UpdateCompleted": "更新が完了しました"
+  },
+  "Bootstrap": {
+    "Initializing": "初期化中...",
+    "LoadingUserData": "ユーザーデータを読み込み中...",
+    "LoadingMasterData": "マスターデータを読み込み中...",
+    "CheckingUpdates": "更新を確認中...",
+    "StartupComplete": "起動完了"
+  }
+}

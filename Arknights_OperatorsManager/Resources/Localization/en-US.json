@@ -1,0 +1,114 @@
+{
+  "App": {
+    "Name": "Arknights Operators Manager",
+    "Version": "Version"
+  },
+  "Common": {
+    "Ok": "OK",
+    "Cancel": "Cancel",
+    "Save": "Save",
+    "Delete": "Delete",
+    "Edit": "Edit",
+    "Add": "Add",
+    "Close": "Close",
+    "Search": "Search",
+    "Filter": "Filter",
+    "Reset": "Reset",
+    "Loading": "Loading...",
+    "Error": "Error",
+    "Warning": "Warning",
+    "Info": "Information",
+    "Success": "Success",
+    "Confirm": "Confirm",
+    "Yes": "Yes",
+    "No": "No"
+  },
+  "Menu": {
+    "File": "File",
+    "Edit": "Edit",
+    "View": "View",
+    "Settings": "Settings",
+    "Help": "Help",
+    "Export": "Export",
+    "Import": "Import",
+    "Backup": "Backup",
+    "Restore": "Restore",
+    "Exit": "Exit"
+  },
+  "Operators": {
+    "Title": "Operators",
+    "List": "Operator List",
+    "Detail": "Operator Details",
+    "Name": "Name",
+    "Rarity": "Rarity",
+    "Class": "Class",
+    "Promotion": "Promotion",
+    "Level": "Level",
+    "SkillLevel": "Skill Level",
+    "SkillMastery": "Skill Mastery",
+    "Module": "Module",
+    "Trust": "Trust",
+    "Potential": "Potential",
+    "CurrentState": "Current State",
+    "TargetState": "Target State",
+    "Group": "Group",
+    "Priority": "Priority",
+    "Memo": "Memo"
+  },
+  "Materials": {
+    "Title": "Materials",
+    "List": "Material List",
+    "Owned": "Owned",
+    "Required": "Required",
+    "Shortage": "Shortage",
+    "Sufficient": "Sufficient",
+    "Category": "Category"
+  },
+  "Events": {
+    "Title": "Events",
+    "List": "Event List",
+    "Name": "Event Name",
+    "Materials": "Obtained Materials",
+    "Enabled": "Enabled",
+    "Disabled": "Disabled"
+  },
+  "Settings": {
+    "Title": "Settings",
+    "Language": "Language",
+    "Theme": "Theme",
+    "ThemeLight": "Light",
+    "ThemeDark": "Dark",
+    "ThemeSystem": "Follow System",
+    "Server": "Server",
+    "ServerCN": "CN Server",
+    "ServerGlobal": "Global Server",
+    "Backup": "Backup Settings",
+    "BackupInterval": "Backup Interval",
+    "BackupRetention": "Backup Retention",
+    "AutoUpdate": "Auto Update"
+  },
+  "Validation": {
+    "Required": "{0} is required",
+    "InvalidRange": "{0} must be between {1} and {2}",
+    "PromotionLimit": "Maximum promotion for this rarity is {0}",
+    "LevelLimit": "Maximum level at promotion {0} is {1}",
+    "MasteryRequiresPromotion2": "Skill mastery requires Promotion 2",
+    "ModuleRequiresPromotion2": "Module requires Promotion 2"
+  },
+  "Notifications": {
+    "SaveSuccess": "Saved successfully",
+    "SaveFailed": "Failed to save",
+    "LoadSuccess": "Loaded successfully",
+    "LoadFailed": "Failed to load",
+    "BackupCreated": "Backup created",
+    "UpdateAvailable": "Update available",
+    "UpdateCompleted": "Update completed"
+  },
+  "Bootstrap": {
+    "Initializing": "Initializing...",
+    "LoadingUserData": "Loading user data...",
+    "LoadingMasterData": "Loading master data...",
+    "CheckingUpdates": "Checking for updates...",
+    "StartupComplete": "Startup complete"
+  }
+}

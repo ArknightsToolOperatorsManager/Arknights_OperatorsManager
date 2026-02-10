@@ -1,0 +1,3 @@
+[submodule "llyrtkframework"]
+	path = llyrtkframework
+	url = https://github.com/ArknightsToolOperatorsManager/llyrtkframework.git

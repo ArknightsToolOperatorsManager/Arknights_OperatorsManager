@@ -1,0 +1,88 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            rid: win-x64
+            artifact: ArknightsOperatorsManager-Windows-x64
+          - os: ubuntu-latest
+            rid: linux-x64
+            artifact: ArknightsOperatorsManager-Linux-x64
+          - os: macos-latest
+            rid: osx-x64
+            artifact: ArknightsOperatorsManager-macOS-x64
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive  # llyrtkframeworkも取得
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore Arknights_OperatorsManager/Arknights_OperatorsManager.csproj
+
+      - name: Publish
+        run: |
+          dotnet publish Arknights_OperatorsManager/Arknights_OperatorsManager.csproj \
+            -c Release \
+            -r ${{ matrix.rid }} \
+            --self-contained true \
+            -p:PublishSingleFile=true \
+            -p:IncludeNativeLibrariesForSelfExtract=true \
+            -p:PublishTrimmed=false \
+            -o publish/${{ matrix.artifact }}
+
+      - name: Create ZIP archive (Windows)
+        if: runner.os == 'Windows'
+        run: |
+          cd publish/${{ matrix.artifact }}
+          Compress-Archive -Path * -DestinationPath ../${{ matrix.artifact }}.zip
+        shell: pwsh
+
+      - name: Create ZIP archive (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: |
+          cd publish/${{ matrix.artifact }}
+          zip -r ../${{ matrix.artifact }}.zip *
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: publish/${{ matrix.artifact }}.zip
+
+  create-release:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/*/*.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

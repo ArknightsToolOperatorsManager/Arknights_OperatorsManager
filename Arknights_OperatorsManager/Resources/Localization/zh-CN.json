@@ -1,0 +1,114 @@
+{
+  "App": {
+    "Name": "明日方舟 干员管理器",
+    "Version": "版本"
+  },
+  "Common": {
+    "Ok": "确定",
+    "Cancel": "取消",
+    "Save": "保存",
+    "Delete": "删除",
+    "Edit": "编辑",
+    "Add": "添加",
+    "Close": "关闭",
+    "Search": "搜索",
+    "Filter": "筛选",
+    "Reset": "重置",
+    "Loading": "加载中...",
+    "Error": "错误",
+    "Warning": "警告",
+    "Info": "信息",
+    "Success": "成功",
+    "Confirm": "确认",
+    "Yes": "是",
+    "No": "否"
+  },
+  "Menu": {
+    "File": "文件",
+    "Edit": "编辑",
+    "View": "视图",
+    "Settings": "设置",
+    "Help": "帮助",
+    "Export": "导出",
+    "Import": "导入",
+    "Backup": "备份",
+    "Restore": "恢复",
+    "Exit": "退出"
+  },
+  "Operators": {
+    "Title": "干员",
+    "List": "干员列表",
+    "Detail": "干员详情",
+    "Name": "名称",
+    "Rarity": "稀有度",
+    "Class": "职业",
+    "Promotion": "精英化",
+    "Level": "等级",
+    "SkillLevel": "技能等级",
+    "SkillMastery": "技能专精",
+    "Module": "模组",
+    "Trust": "信赖",
+    "Potential": "潜能",
+    "CurrentState": "当前状态",
+    "TargetState": "目标状态",
+    "Group": "分组",
+    "Priority": "优先级",
+    "Memo": "备注"
+  },
+  "Materials": {
+    "Title": "材料",
+    "List": "材料列表",
+    "Owned": "持有数量",
+    "Required": "需求数量",
+    "Shortage": "缺少数量",
+    "Sufficient": "充足",
+    "Category": "分类"
+  },
+  "Events": {
+    "Title": "活动",
+    "List": "活动列表",
+    "Name": "活动名称",
+    "Materials": "获取材料",
+    "Enabled": "启用",
+    "Disabled": "禁用"
+  },
+  "Settings": {
+    "Title": "设置",
+    "Language": "语言",
+    "Theme": "主题",
+    "ThemeLight": "浅色",
+    "ThemeDark": "深色",
+    "ThemeSystem": "跟随系统",
+    "Server": "服务器",
+    "ServerCN": "国服",
+    "ServerGlobal": "国际服",
+    "Backup": "备份设置",
+    "BackupInterval": "备份间隔",
+    "BackupRetention": "备份保留数",
+    "AutoUpdate": "自动更新"
+  },
+  "Validation": {
+    "Required": "{0}为必填项",
+    "InvalidRange": "{0}必须在{1}到{2}之间",
+    "PromotionLimit": "该稀有度最高可精英化{0}",
+    "LevelLimit": "精英{0}最高等级为{1}",
+    "MasteryRequiresPromotion2": "技能专精需要精英2",
+    "ModuleRequiresPromotion2": "模组需要精英2"
+  },
+  "Notifications": {
+    "SaveSuccess": "保存成功",
+    "SaveFailed": "保存失败",
+    "LoadSuccess": "加载成功",
+    "LoadFailed": "加载失败",
+    "BackupCreated": "备份已创建",
+    "UpdateAvailable": "有新的更新",
+    "UpdateCompleted": "更新完成"
+  },
+  "Bootstrap": {
+    "Initializing": "初始化中...",
+    "LoadingUserData": "正在加载用户数据...",
+    "LoadingMasterData": "正在加载主数据...",
+    "CheckingUpdates": "正在检查更新...",
+    "StartupComplete": "启动完成"
+  }
+}

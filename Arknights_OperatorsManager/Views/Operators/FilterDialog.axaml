@@ -1,0 +1,130 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:Arknights_OperatorsManager.ViewModels.Operators"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
+        x:Class="Arknights_OperatorsManager.Views.Operators.FilterDialog"
+        x:DataType="vm:FilterDialogViewModel"
+        Title="Filter Operators"
+        Width="500" Height="600"
+        WindowStartupLocation="CenterOwner"
+        CanResize="False">
+
+  <Design.DataContext>
+    <vm:FilterDialogViewModel />
+  </Design.DataContext>
+
+  <DockPanel Margin="16">
+
+    <!-- Bottom Buttons -->
+    <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+      <Button Content="OK" Command="{Binding OkCommand}" Width="80" Margin="0,0,8,0" />
+      <Button Content="Cancel" Command="{Binding CancelCommand}" Width="80" Margin="0,0,8,0" />
+      <Button Content="Reset" Command="{Binding ResetCommand}" Width="80" />
+    </StackPanel>
+
+    <!-- Filter Content -->
+    <ScrollViewer DockPanel.Dock="Top">
+      <StackPanel Spacing="16">
+
+        <!-- Rarity Section -->
+        <Border BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="12">
+          <StackPanel>
+            <TextBlock Text="Rarity" FontWeight="Bold" Margin="0,0,0,8" />
+            <WrapPanel>
+              <CheckBox Content="★1" IsChecked="{Binding Rarity1}" Margin="0,0,16,8" />
+              <CheckBox Content="★2" IsChecked="{Binding Rarity2}" Margin="0,0,16,8" />
+              <CheckBox Content="★3" IsChecked="{Binding Rarity3}" Margin="0,0,16,8" />
+              <CheckBox Content="★4" IsChecked="{Binding Rarity4}" Margin="0,0,16,8" />
+              <CheckBox Content="★5" IsChecked="{Binding Rarity5}" Margin="0,0,16,8" />
+              <CheckBox Content="★6" IsChecked="{Binding Rarity6}" Margin="0,0,16,8" />
+            </WrapPanel>
+          </StackPanel>
+        </Border>
+
+        <!-- Gender Section -->
+        <Border BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="12">
+          <StackPanel>
+            <TextBlock Text="Gender" FontWeight="Bold" Margin="0,0,0,8" />
+            <StackPanel Orientation="Horizontal">
+              <CheckBox Content="Male" IsChecked="{Binding Male}" Margin="0,0,16,0" />
+              <CheckBox Content="Female" IsChecked="{Binding Female}" />
+            </StackPanel>
+          </StackPanel>
+        </Border>
+
+        <!-- Ownership Section -->
+        <Border BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="12">
+          <StackPanel>
+            <TextBlock Text="Ownership" FontWeight="Bold" Margin="0,0,0,8" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <RadioButton Content="All" GroupName="Ownership" IsChecked="{Binding !IsOwned}" />
+              <RadioButton Content="Owned" GroupName="Ownership" IsChecked="{Binding IsOwned, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              <RadioButton Content="Not Owned" GroupName="Ownership" IsChecked="{Binding IsOwned, Converter={x:Static ObjectConverters.IsNull}}" />
+            </StackPanel>
+          </StackPanel>
+        </Border>
+
+        <!-- Goal Achievement Section -->
+        <Border BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="12">
+          <StackPanel>
+            <TextBlock Text="Goal Achievement" FontWeight="Bold" Margin="0,0,0,8" />
+            <StackPanel Orientation="Horizontal" Spacing="8">
+              <RadioButton Content="All" GroupName="Goal" IsChecked="{Binding !IsGoalAchieved}" />
+              <RadioButton Content="Achieved" GroupName="Goal" IsChecked="{Binding IsGoalAchieved, Converter={x:Static ObjectConverters.IsNotNull}}" />
+              <RadioButton Content="Not Achieved" GroupName="Goal" IsChecked="{Binding IsGoalAchieved, Converter={x:Static ObjectConverters.IsNull}}" />
+            </StackPanel>
+          </StackPanel>
+        </Border>
+
+        <!-- Date Filter Section -->
+        <Border BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="12">
+          <StackPanel>
+            <CheckBox Content="Enable Date Filter"
+                      IsChecked="{Binding EnableDateFilter}"
+                      FontWeight="Bold"
+                      Margin="0,0,0,8" />
+
+            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*" IsEnabled="{Binding EnableDateFilter}">
+
+              <!-- Start Date -->
+              <TextBlock Grid.Row="0" Grid.Column="0" Text="Start Date:" VerticalAlignment="Center" Margin="0,0,8,8" />
+              <DatePicker Grid.Row="0" Grid.Column="1" SelectedDate="{Binding StartDate}" Margin="0,0,0,8" />
+
+              <!-- End Date -->
+              <TextBlock Grid.Row="1" Grid.Column="0" Text="End Date:" VerticalAlignment="Center" Margin="0,0,8,8" />
+              <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding EndDate}" Margin="0,0,0,8" />
+
+              <!-- Server -->
+              <TextBlock Grid.Row="2" Grid.Column="0" Text="Server:" VerticalAlignment="Center" Margin="0,0,8,0" />
+              <ComboBox Grid.Row="2" Grid.Column="1" SelectedItem="{Binding SelectedServer}">
+                <ComboBoxItem Content="Global" />
+                <ComboBoxItem Content="China" />
+              </ComboBox>
+
+            </Grid>
+          </StackPanel>
+        </Border>
+
+      </StackPanel>
+    </ScrollViewer>
+
+  </DockPanel>
+
+</Window>
