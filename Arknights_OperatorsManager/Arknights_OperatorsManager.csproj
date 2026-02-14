@@ -7,7 +7,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     <!-- Windows専用アプリケーションのため、プラットフォーム固有API警告を抑制 -->
-    <NoWarn>$(NoWarn);CA1416</NoWarn>
+    <!-- Single-file publishing警告とObsolete警告も抑制 -->
+    <NoWarn>$(NoWarn);CA1416;IL3000;CS0618</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

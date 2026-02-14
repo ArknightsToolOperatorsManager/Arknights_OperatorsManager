@@ -389,3 +389,7 @@ FodyWeavers.xsd
 # User data files (これらはユーザーごとに異なるため除外)
 **/Data/user_*.json
 **/Data/.last_update_check
+
+.claude/
+.requirements/
+Arknights_OperatorsManager.Tests/
